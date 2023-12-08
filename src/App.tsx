@@ -6,7 +6,7 @@ export function App() {
   return (
     <div>
       <Button as={Link} to={'https://google.com'}>
-        Hello
+          Hello
       </Button>
     </div>
   )
