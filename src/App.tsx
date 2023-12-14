@@ -1,13 +1,11 @@
-import { Link } from 'react-router-dom'
-
-import { Button } from '@/components/ui/button'
+import {Typography} from "@/components/ui/typography";
 
 export function App() {
   return (
     <div>
-      <Button as={Link} to={'https://google.com'}>
+      <Typography as={'a'}  href={'google.com'}>
           Hello
-      </Button>
+      </Typography>
     </div>
   )
 }
