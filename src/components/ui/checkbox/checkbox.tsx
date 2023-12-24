@@ -12,7 +12,7 @@ import s from './checkbox.module.scss'
 export type CheckboxProps = {
     className?: string
     checked?: boolean
-    onChange?: (checked: boolean) => void
+    onValueChange?: (checked: boolean) => void
     disabled?: boolean
     required?: boolean
     label?: string
@@ -28,7 +28,7 @@ export type CheckboxProps = {
 export const Checkbox: FC<CheckboxProps> = forwardRef<HTMLInputElement, CheckboxProps>((
         {
             checked,
-            onChange,
+            onValueChange,
             position,
             disabled,
             required,
@@ -53,7 +53,7 @@ export const Checkbox: FC<CheckboxProps> = forwardRef<HTMLInputElement, Checkbox
                             <CheckboxRadix.Root
                                 className={classNames.root}
                                 checked={checked}
-                                onCheckedChange={onChange}
+                                onCheckedChange={onValueChange}
                                 disabled={disabled}
                                 required={required}
                                 id={id}

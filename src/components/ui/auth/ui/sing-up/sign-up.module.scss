@@ -1,0 +1,41 @@
+.card {
+  max-width: 420px;
+  width: 100%;
+  padding: 33px 36px 29px;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    color: var(--color-light-100, #fff);
+    /* Large */
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    text-align: center;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    width: 100%;
+    margin-bottom: 12px;
+    .button{
+      margin-top: 36px;
+    }
+    .recoveryPassvord{
+      text-align: end;
+    }
+  }
+  .dontHaveAnAccount{
+    text-align: center;
+     color: var(--color-light-900, #C3C1C7);
+  }
+  .signUp{
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-bold);
+    text-decoration-line: underline;
+  }
+}
