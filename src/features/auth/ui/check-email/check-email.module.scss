@@ -1,0 +1,18 @@
+@import '@/app/styles/vars';
+.card {
+  @extend %card;
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    align-items: center;
+    .emailIcon {
+      margin-top: 8px;
+    }
+    .instructions {
+      color: var(--Light-900, #C3C1C7);
+      text-align: center;
+      margin-bottom: 46px;
+    }
+  }
+}
