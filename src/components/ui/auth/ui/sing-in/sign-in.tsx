@@ -60,7 +60,7 @@ export const SignIn = (props: Props) => {
                         />
                         <Typography
                             variant={'body2'} as={'a'}
-                            className={s.recoveryPassvord}
+                            className={s.recoveryPassword}
                         >
                             Forgot Password?
                         </Typography>
