@@ -2,7 +2,7 @@ import s from './radio-group.module.scss'
 import * as RadioGroupRadix from '@radix-ui/react-radio-group';
 import {clsx} from "clsx";
 import {FC} from "react";
-import {Typography} from "@/components/ui/typography";
+import {Typography} from "@/shared/ui/typography";
 
 export type RadioItem = {
     label: string

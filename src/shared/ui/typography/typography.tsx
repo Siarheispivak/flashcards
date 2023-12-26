@@ -22,6 +22,7 @@ export type TypographyProps<T extends ElementType = 'p'> = {
   as?: T
   children?: ReactNode
   className?: string
+  value?: string
   variant?: (typeof TypographyVariant)[number]
 } & ComponentPropsWithoutRef<T>
 
