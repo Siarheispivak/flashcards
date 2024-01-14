@@ -69,21 +69,12 @@ export const SignIn = (props: Props) => {
           </div>
         </form>
         <Typography as={'a'} className={s.dontHaveAnAccount} variant={'body2'}>
-          Don't have an account?
+          Dont have an account?
         </Typography>
         <Button as={'a'} className={s.signUp} variant={'link'}>
           Sign Up
         </Button>
       </Card>
-
-      {/*<form onSubmit={handleSubmit(onSubmit)}>*/}
-
-      {/*    <ControlledTextField control={control} errorMessage={errors.password?.message} name={'password'}*/}
-      {/*                         label={'password'}/>*/}
-      {/*    <ControlledCheckbox control={control} name={'rememberMe'} label={'remember me'}/>*/}
-      {/*    <ControlledCheckbox control={control} name={'acceptTerms'} label={'accept terms and conditions'}/>*/}
-      {/*    <Button type="submit">Submit</Button>*/}
-      {/*</form>*/}
     </>
   )
 }
