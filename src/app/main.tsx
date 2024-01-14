@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { App } from '@/app/App.tsx'
+import { App } from '@/app/App'
 import ReactDOM from 'react-dom/client'
 
 import '@/app/styles/index.scss'

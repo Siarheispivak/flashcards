@@ -1,33 +1,28 @@
-import {Email} from "@/shared/assets/icons";
-import s from './check-email.module.scss';
-import {Card} from "@/shared/ui/card";
-import {Typography} from "@/shared/ui/typography";
-import {Button} from "@/shared/ui/button";
+import { Email } from '@/shared/assets/icons'
+import { Button } from '@/shared/ui/button'
+import { Card } from '@/shared/ui/card'
+import { Typography } from '@/shared/ui/typography'
+
+import s from './check-email.module.scss'
 
 export type Props = {
-    email: string
+  email: string
 }
-export const CheckEmail = ({email}: Props) => {
-
-    return (
-        <Card className={s.card}>
-            <div className={s.container}>
-
-            <Typography variant={'large'} className={s.title}>
-                Check Email
-            </Typography>
-            <Email className={s.emailIcon}/>
-            <Typography variant={'body2'} className={s.instructions}>
-                We’ve sent an Email with instructions to {email}
-            </Typography>
-            <Button
-                className={s.button}
-                fullWidth
-                type={'submit'}
-                >
-                Back to Sign In
-            </Button>
-            </div>
-        </Card>
-    )
+export const CheckEmail = ({ email }: Props) => {
+  return (
+    <Card className={s.card}>
+      <div className={s.container}>
+        <Typography className={s.title} variant={'large'}>
+          Check Email
+        </Typography>
+        <Email className={s.emailIcon} />
+        <Typography className={s.instructions} variant={'body2'}>
+          We’ve sent an Email with instructions to {email}
+        </Typography>
+        <Button className={s.button} fullWidth type={'submit'}>
+          Back to Sign In
+        </Button>
+      </div>
+    </Card>
+  )
 }

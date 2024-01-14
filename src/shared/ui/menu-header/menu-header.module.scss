@@ -1,0 +1,13 @@
+.trigger {
+  all: unset;
+  border-radius: 50%;
+  display: inline-flex;
+  height: 36px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.itemInformation {
+  display: flex;
+  gap: 8px;
+}
