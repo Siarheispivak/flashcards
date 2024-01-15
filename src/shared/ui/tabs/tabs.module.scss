@@ -1,0 +1,65 @@
+.root {
+  display: flex;
+  flex-direction: column;
+
+  .list {
+    display: flex;
+    flex-shrink: 0;
+    //Элемент не будет уменьшаться,
+    // он сохранит нужную ему ширину и
+    // не будет переносить содержимое,
+    // если размеры элемента не заданы.
+
+    .trigger {
+      all: unset;
+      cursor: pointer;
+      display: inline-flex;
+      padding: 6px 24px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 2px 0 0 2px;
+      color: var(--Light-100, #FFF);
+
+      &.fullWidth {
+        flex-grow: 1;
+      }
+
+      &:default {
+        border: 1px solid var(--Dark-300, #4C4C4C);
+      }
+
+      &[data-state='active'] {
+        background-color: var(--color-accent-500);
+      }
+
+      &:hover {
+        border-radius: 2px;
+        border: 1px solid var(--Dark-100, #808080);
+        background: var(--Dark-300, #4C4C4C);
+        color: var(--Light-900, #C3C1C7);
+      }
+
+      &:focus {
+        border-radius: 2px;
+        border: 2px solid var(--Info-900, #234E99);
+        background: var(--Dark-700, #171717);
+      }
+      &:focus-visible {
+        border-radius: 2px;
+        border: 2px solid var(--color-info-900);
+      }
+
+      &[data-disabled] {
+        cursor: initial;
+        opacity: 0.5;
+        background-color: inherit;
+      }
+
+    }
+  }
+}
+
+.content {
+  color: var(--color-text-primary);
+}

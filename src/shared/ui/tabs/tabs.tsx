@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react'
 
+import { Typography } from '@/shared/ui/typography'
 import * as TabsRadixUI from '@radix-ui/react-tabs'
 import { clsx } from 'clsx'
 
@@ -61,7 +62,7 @@ export const Tabs: FC<TabsProps> = ({
               key={index}
               value={el.value}
             >
-              {el.title}
+              <Typography variant={'body1'}>{el.title}</Typography>
             </TabsRadixUI.Trigger>
           )
         })}
