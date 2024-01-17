@@ -8,6 +8,7 @@ import {
 
 import { DecksPage } from '@/pages/decks-pages/decks-pages'
 import { Header } from '@/shared/ui/header'
+import { Slider } from '@/shared/ui/slider/slider'
 import { TabContent, Tabs } from '@/shared/ui/tabs/tabs'
 
 const publicRoutes: RouteObject[] = [
@@ -21,6 +22,10 @@ const privateRoutes: RouteObject[] = [
   {
     element: <Header />,
     path: '/header',
+  },
+  {
+    element: <Slider />,
+    path: '/slider',
   },
   {
     element: (
