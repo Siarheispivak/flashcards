@@ -8,6 +8,7 @@ import {
 
 import { DecksPage } from '@/pages/decks-pages/decks-pages'
 import { Header } from '@/shared/ui/header'
+import { Select } from '@/shared/ui/select/select.tsx'
 import { Slider } from '@/shared/ui/slider/slider'
 import { TabContent, Tabs } from '@/shared/ui/tabs/tabs'
 
@@ -17,11 +18,19 @@ const publicRoutes: RouteObject[] = [
     path: '/login',
   },
 ]
-
+const perPageOptions = ['apple', 'banana', 'pineapple', 'orange', 'egg', 'grapes', 'water', 'soda']
+const selectOptions = perPageOptions.map(value => ({
+  label: value,
+  value: value,
+}))
 const privateRoutes: RouteObject[] = [
   {
     element: <Header />,
     path: '/header',
+  },
+  {
+    element: <Select label={'Select-box'} selectOptions={selectOptions} />,
+    path: '/select',
   },
   {
     element: <Slider />,

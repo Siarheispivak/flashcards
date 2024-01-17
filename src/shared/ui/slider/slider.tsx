@@ -22,6 +22,7 @@ export const Slider = forwardRef<HTMLSpanElement, RadixSlider.SliderProps>(
         </div>
         <RadixSlider.Root
           className={s.SliderRoot}
+          defaultValue={[10, 90]}
           minStepsBetweenThumbs={1}
           ref={ref}
           step={1}
