@@ -64,7 +64,7 @@ export const Select = (props: SelectProps) => {
                 return (
                   <RadixSelect.Item
                     className={s.item}
-                    disabled={disabled}
+                    disabled={el.disabled}
                     key={el.value}
                     value={el.label}
                   >
