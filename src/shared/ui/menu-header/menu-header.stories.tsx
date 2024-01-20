@@ -5,7 +5,7 @@ import { MenuHeader } from './'
 const meta = {
   component: MenuHeader,
   tags: ['autodocs'],
-  title: 'Component/MenuHeader',
+  title: 'Components/UI/MenuHeader',
 } satisfies Meta<typeof MenuHeader>
 
 export default meta

@@ -5,7 +5,7 @@ import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
   component: Dropdown,
-  title: 'Components/Dropdown',
+  title: 'Components/UI/Dropdown',
 } satisfies Meta<typeof Dropdown>
 
 export default meta
