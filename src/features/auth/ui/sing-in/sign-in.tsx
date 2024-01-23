@@ -20,7 +20,7 @@ const loginSchema = z.object({
 
 export type FormValues = z.infer<typeof loginSchema>
 type Props = {
-  onSubmit: (data: FormValues) => void
+  onSubmit?: (data: FormValues) => void
 }
 export const SignIn = (props: Props) => {
   const {
@@ -36,6 +36,9 @@ export const SignIn = (props: Props) => {
     },
     resolver: zodResolver(loginSchema),
   })
+  const submitter = () => {
+    alert('yes')
+  }
 
   return (
     <>
@@ -44,7 +47,7 @@ export const SignIn = (props: Props) => {
         <Typography className={s.title} variant={'large'}>
           Sign In
         </Typography>
-        <form onSubmit={handleSubmit(props.onSubmit)}>
+        <form onSubmit={handleSubmit(props.onSubmit ?? submitter)}>
           <div className={s.form}>
             <ControlledTextField
               control={control}

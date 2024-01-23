@@ -6,61 +6,19 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
-import { DecksPage } from '@/pages/decks-pages/decks-pages'
-import { Header } from '@/shared/ui/header'
-import { Select } from '@/shared/ui/select/select.tsx'
-import { Slider } from '@/shared/ui/slider/slider'
-import { TabContent, Tabs } from '@/shared/ui/tabs/tabs'
+import { SignIn } from '@/features/auth/ui/sing-in'
+import { DecksPage } from '@/pages/decks-pages/decks-page'
 
 const publicRoutes: RouteObject[] = [
   {
-    element: <div>login</div>,
+    element: <SignIn />,
     path: '/login',
   },
 ]
-const perPageOptions = ['apple', 'banana', 'pineapple', 'orange', 'egg', 'grapes', 'water', 'soda']
-const selectOptions = perPageOptions.map(value => ({
-  label: value,
-  value: value,
-}))
 const privateRoutes: RouteObject[] = [
   {
-    element: <Header />,
-    path: '/header',
-  },
-  {
-    element: <Select label={'Select-box'} selectOptions={selectOptions} />,
-    path: '/select',
-  },
-  {
-    element: <Slider />,
-    path: '/slider',
-  },
-  {
-    element: (
-      <Tabs
-        defaultValue={'Switcher1'}
-        fullWidth
-        tabs={[
-          { title: 'Switcher1', value: 'Switcher1' },
-          { title: 'Switcher2', value: 'Switcher2' },
-          { title: 'Switcher3', value: 'Switcher3' },
-          { title: 'Switcher4', value: 'Switcher4' },
-          { disabled: true, title: 'Switcher5', value: 'Switcher5' },
-        ]}
-      >
-        <TabContent value={'Switcher1'}>Switcher1</TabContent>
-        <TabContent value={'Switcher2'}>Switcher2</TabContent>
-        <TabContent value={'Switcher3'}>Switcher3</TabContent>
-        <TabContent value={'Switcher4'}>Switcher4</TabContent>
-        <TabContent value={'Switcher5'}>Switcher5</TabContent>
-      </Tabs>
-    ),
-    path: '/tabs',
-  },
-  {
     element: <DecksPage />,
-    path: '/',
+    path: '/decks',
   },
 ]
 
