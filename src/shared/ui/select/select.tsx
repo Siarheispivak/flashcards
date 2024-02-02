@@ -25,7 +25,6 @@ type SelectProps = {
   variant?: 'default' | 'pagination'
 }
 export const Select = (props: SelectProps) => {
-  console.log(props)
   const {
     className,
     defaultValue,
@@ -35,6 +34,7 @@ export const Select = (props: SelectProps) => {
     placeholder,
     selectOptions,
     value,
+    variant = 'DEFAULT',
   } = props
 
   return (
@@ -53,7 +53,7 @@ export const Select = (props: SelectProps) => {
         required
         value={value}
       >
-        <RadixSelect.Trigger className={clsx(s.trigger, className)}>
+        <RadixSelect.Trigger className={clsx(s.trigger, className, s[variant])}>
           <RadixSelect.Value placeholder={placeholder} />
           <ArrowDownIcon className={s.icon} />
         </RadixSelect.Trigger>

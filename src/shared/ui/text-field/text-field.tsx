@@ -1,32 +1,36 @@
 import { ComponentProps, ComponentPropsWithoutRef, forwardRef, useState } from 'react'
 
+import { CloseIcon, Eye, VisibilityOff } from '@/shared/assets/icons'
+import Search from '@/shared/assets/icons/search'
 import { clsx } from 'clsx'
-
-import { VisibilityOff, Eye } from '@/shared/assets/icons'
-import { Typography } from '../typography'
 
 import s from './text-field.module.scss'
 
+import { Typography } from '../typography'
+
 export type TextFieldProps = {
-  onValueChange?: (value: string) => void
   containerProps?: ComponentProps<'div'>
-  labelProps?: ComponentProps<'label'>
   errorMessage?: string
   label?: string
+  labelProps?: ComponentProps<'label'>
+  onClearInput?: () => void
+  onValueChange?: (value: string) => void
 } & ComponentPropsWithoutRef<'input'>
 
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   (
     {
       className,
+      containerProps,
       errorMessage,
+      label,
+      labelProps,
+      onChange,
+      onClearInput,
+      onValueChange,
       placeholder,
       type,
-      containerProps,
-      labelProps,
-      label,
-      onChange,
-      onValueChange,
+      value,
       ...restProps
     },
     ref
@@ -43,41 +47,54 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     }
 
     const classNames = {
-      root: clsx(s.root, containerProps?.className),
-      fieldContainer: clsx(s.fieldContainer),
-      field: clsx(s.field, !!errorMessage && s.error, className),
-      label: clsx(s.label, labelProps?.className),
       error: clsx(s.error),
+      field: clsx(s.field, !!errorMessage && s.error, className),
+      fieldContainer: clsx(s.fieldContainer, className),
+      label: clsx(s.label, labelProps?.className),
+      root: clsx(s.root, containerProps?.className),
+    }
+    const clearInputHandler = () => {
+      onValueChange?.('')
+      onClearInput?.()
     }
 
     return (
       <div className={classNames.root}>
         {label && (
-          <Typography variant="body2" as="label" className={classNames.label}>
+          <Typography as={'label'} className={classNames.label} variant={'body2'}>
             {label}
           </Typography>
         )}
         <div className={classNames.fieldContainer}>
-          <input
-            className={classNames.field}
-            placeholder={placeholder}
-            ref={ref}
-            type={finalType}
-            onChange={handleChange}
-            {...restProps}
-          />
+          {type === 'search' && <Search />}
+          <div className={s.inputWrapper}>
+            <input
+              className={classNames.field}
+              onChange={handleChange}
+              placeholder={placeholder}
+              ref={ref}
+              type={finalType}
+              {...restProps}
+            />
+          </div>
+
           {isShowPasswordButtonShown && (
             <button
               className={s.showPassword}
-              type={'button'}
               onClick={() => setShowPassword(prev => !prev)}
+              type={'button'}
             >
               {showPassword ? <VisibilityOff /> : <Eye />}
             </button>
           )}
+          {type === 'search' && value && (
+            <button className={s.rightIcon} onClick={clearInputHandler} type={'button'}>
+              <CloseIcon className={s.closeOutlineIcon} />
+            </button>
+          )}
         </div>
 
-        <Typography variant="error" className={classNames.error}>
+        <Typography className={classNames.error} variant={'error'}>
           {errorMessage}
         </Typography>
       </div>

@@ -10,6 +10,6 @@ export const baseApi = createApi({
   }),
   // refetchOnFocus: true,
   endpoints: () => ({}),
-  reducerPath: 'cardsApi',
-  tagTypes: ['Decks'],
+  reducerPath: 'basesApi',
+  tagTypes: ['AuthMe', 'Decks'],
 })

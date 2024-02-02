@@ -20,16 +20,18 @@ const deckApi = baseApi.injectEndpoints({
         },
       }),
       getDeckById: builder.query<GetDecksResponse, GetDecksByIdArgs>({
+        // поменять типизацию респонса
         query: ({ id }) => {
           return {
             url: `v1/decks/${id}`,
           }
         },
       }),
-      getDecks: builder.query<GetDecksResponse, GetDecksArgs | void>({
+      getDecks: builder.query<GetDecksResponse, GetDecksArgs>({
         providesTags: ['Decks'],
         query: args => {
           return {
+            method: 'GET',
             params: args ?? {},
             url: `v1/decks`,
           }

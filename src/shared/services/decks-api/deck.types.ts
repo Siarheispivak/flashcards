@@ -7,11 +7,12 @@ export type GetDecksArgs = {
   authorId?: string
   currentPage?: number
   itemsPerPage?: number
-  maxCardsCount?: number
-  minCardsCount?: number
+  maxCardsCount?: string
+  minCardsCount?: string
   name?: string
-  orderBy?: string
-}
+  orderBy?: null | string
+} | void
+
 export type GetDecksByIdArgs = {
   id: string
 }
@@ -40,6 +41,7 @@ export type GetDecksResponseItems = {
   isDeleted?: boolean | null
   isPrivate: boolean
   name: string
+  rating: number
   shots: number
   updated: string
   userId: string

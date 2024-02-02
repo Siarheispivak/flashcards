@@ -1,0 +1,13 @@
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 36px;
+  .searchField{
+    width: 300px;
+  }
+  .slider {
+    width: 100%;
+    max-width: 250px;
+  }
+}
