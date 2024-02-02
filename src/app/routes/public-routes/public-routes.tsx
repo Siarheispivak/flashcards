@@ -1,9 +1,12 @@
 import { RouteObject } from 'react-router-dom'
 
+import { SignUpPage } from '@/pages/auth/sign-up-page'
+import { routes } from '@/shared/const'
+
 export const publicRoutes: RouteObject[] = [
-  // { path: routes.AUTH.SING_IN, element: <SingInPage /> },
-  // { path: routes.AUTH.SIGN_UP, element: <SingUpPage /> },
-  // { path: routes.AUTH.FORGOT_PASSWORD, element: <ForgotPasswordPage /> },
-  // { path: routes.AUTH.NEW_PASSWORD, element: <NewPasswordPage /> },
-  // { path: routes.AUTH.CHECK_EMAIL, element: <CheckEmailPage /> },
+  // { element: <SignInPage />, path: routes.AUTH.SING_IN },
+  { element: <SignUpPage />, path: routes.AUTH.SIGN_UP },
+  // { element: <ForgotPassword />, path: routes.AUTH.FORGOT_PASSWORD },
+  // { element: <NewPasswordPage />, path: routes.AUTH.NEW_PASSWORD },
+  // { element: <CheckEmailPage />, path: routes.AUTH.CHECK_EMAIL },
 ]

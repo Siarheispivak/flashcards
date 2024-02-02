@@ -13,7 +13,8 @@
 }
 
 
-.fieldContainer {
+
+.inputContainer {
   display: flex;
   flex-wrap: nowrap;
   gap: 0.56rem;
@@ -46,8 +47,11 @@
   }
 
   .inputWrapper {
+    width: 100%;
+    background: transparent;
 
     .field {
+      position: relative;
       width: 100%;
       padding: 6px 12px;
 
@@ -55,15 +59,36 @@
       font-size: 16px;
       font-weight: 400;
       line-height: 24px;
-      color: var(--color-light-100);
 
-      background: transparent;
+      background-color: transparent;
       outline: 0;
       border: none;
       outline: none;
 
       transition: border-color 0.2s;
 
+      .showPassword {
+        cursor: pointer;
+
+        position: absolute;
+        bottom: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+
+        width: 20px;
+        height: 20px;
+        margin-right: 12px;
+        padding: 0;
+
+        background-color: transparent;
+        border: 0;
+        outline: 0;
+
+        &:focus-visible {
+          outline: var(--outline-focus);
+        }
+      }
     }
   }
 
@@ -75,25 +100,4 @@
   color: var(--color-dark-100);
 }
 
-.showPassword {
-  cursor: pointer;
 
-  position: absolute;
-  bottom: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0;
-
-  width: 20px;
-  height: 20px;
-  margin-right: 12px;
-  padding: 0;
-
-  background: transparent;
-  border: 0;
-  outline: 0;
-
-  &:focus-visible {
-    outline: var(--outline-focus);
-  }
-}

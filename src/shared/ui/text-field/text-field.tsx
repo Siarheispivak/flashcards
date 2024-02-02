@@ -49,7 +49,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     const classNames = {
       error: clsx(s.error),
       field: clsx(s.field, !!errorMessage && s.error, className),
-      fieldContainer: clsx(s.fieldContainer, className),
+      inputContainer: clsx(s.inputContainer, className),
       label: clsx(s.label, labelProps?.className),
       root: clsx(s.root, containerProps?.className),
     }
@@ -65,7 +65,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
             {label}
           </Typography>
         )}
-        <div className={classNames.fieldContainer}>
+        <div className={classNames.inputContainer}>
           {type === 'search' && <Search />}
           <div className={s.inputWrapper}>
             <input
