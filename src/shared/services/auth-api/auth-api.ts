@@ -34,11 +34,11 @@ const authApi = baseApi.injectEndpoints({
       signIn: builder.mutation<{ accessToken: string }, LoginArgs>({
         extraOptions: { maxRetries: 2 },
         invalidatesTags: ['AuthMe'],
-        query: arg => {
+        query: ({ email, password }) => {
           return {
-            body: arg,
+            body: { email, password },
             method: 'POST',
-            url: 'v1/auth/me',
+            url: 'v1/auth/login', //почему у тёмы v1/auth/me
           }
         },
       }),

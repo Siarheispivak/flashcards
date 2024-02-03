@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 
+import { signInSchema } from '@/features/auth/lib/schemas/sign-in-schema/sign-in-schema.tsx'
 import { Button } from '@/shared/ui/button'
 import { Card } from '@/shared/ui/card'
 import { ControlledCheckbox } from '@/shared/ui/controlled/controlled-checkbox/controlled-checkbox'
@@ -11,34 +12,24 @@ import { z } from 'zod'
 
 import s from './sign-in.module.scss'
 
-const loginSchema = z.object({
-  acceptTerms: z.boolean().optional(),
-  email: z.string().email('Please enter a valid email'),
-  password: z.string().min(3).max(30),
-  rememberMe: z.boolean().optional(),
-})
-
-export type FormValues = z.infer<typeof loginSchema>
+export type SignInFormType = z.infer<typeof signInSchema>
 type Props = {
-  onSubmit?: (data: FormValues) => void
+  onSubmit: (data: SignInFormType) => void
 }
-export const SignIn = (props: Props) => {
+export const SignInForm = (props: Props) => {
   const {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm<FormValues>({
+  } = useForm<SignInFormType>({
     defaultValues: {
-      acceptTerms: false,
       email: '',
       password: '',
       rememberMe: false,
     },
-    resolver: zodResolver(loginSchema),
+    mode: 'onSubmit',
+    resolver: zodResolver(signInSchema),
   })
-  const submitter = () => {
-    alert('yes')
-  }
 
   return (
     <>
@@ -47,7 +38,7 @@ export const SignIn = (props: Props) => {
         <Typography className={s.title} variant={'large'}>
           Sign In
         </Typography>
-        <form onSubmit={handleSubmit(props.onSubmit ?? submitter)}>
+        <form onSubmit={handleSubmit(props.onSubmit)}>
           <div className={s.form}>
             <ControlledTextField
               control={control}
