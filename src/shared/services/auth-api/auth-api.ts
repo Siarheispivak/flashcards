@@ -22,7 +22,6 @@ const authApi = baseApi.injectEndpoints({
         },
       }),
       resetPassword: builder.mutation<unknown, { password: string; token: string }>({
-        //почему Unknown если в апишке токен
         query: ({ password, token }) => {
           return {
             body: { password },

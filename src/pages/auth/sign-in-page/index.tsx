@@ -1,1 +1,1 @@
-export { SignInPage } from './sign-in-page.tsx'
+export { SignInPage } from './sign-in-page'

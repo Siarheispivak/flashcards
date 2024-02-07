@@ -1,1 +1,1 @@
-export { CommonLayout } from './common-layout.tsx'
+export { CommonLayout } from './common-layout'

@@ -1,1 +1,1 @@
-export * from './profile-information.tsx'
+export * from './profile-information'

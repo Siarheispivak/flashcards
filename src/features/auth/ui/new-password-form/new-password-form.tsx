@@ -8,7 +8,7 @@ import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import s from './new-password.module.scss'
+import s from './new-password-form.module.scss'
 
 const newPasswordSchema = z.object({
   newPassword: z.string().min(3).max(30),
@@ -20,7 +20,7 @@ export type Props = {
   onSubmit: (data: newPasswordFormValues) => void
 }
 
-export const NewPassword = (props: Props) => {
+export const NewPasswordForm = (props: Props) => {
   const {
     control,
     formState: { errors },

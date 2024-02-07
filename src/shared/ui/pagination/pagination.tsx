@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
 import { ArrowBackIcon, ArrowNextIcon } from '@/shared/assets'
-import { usePagination } from '@/shared/ui/pagination/usePagination.tsx'
-import { Select } from '@/shared/ui/select/select.tsx'
+import { usePagination } from '@/shared/ui/pagination/usePagination'
+import { Select } from '@/shared/ui/select/select'
 import { Typography } from '@/shared/ui/typography'
 import { clsx } from 'clsx'
 

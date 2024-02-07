@@ -1,5 +1,6 @@
-import { SignUpForm, SignUpFormType } from '@/features/auth/ui/sing-up'
 import { useSignUpMutation } from '@/shared/services/auth-api'
+
+import { SignUpForm, SignUpFormType } from '../../../features/auth/ui/sing-up-form'
 
 export const SignUpPage = () => {
   const [signUp] = useSignUpMutation()

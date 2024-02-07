@@ -3,12 +3,12 @@ import { Button } from '@/shared/ui/button'
 import { Card } from '@/shared/ui/card'
 import { Typography } from '@/shared/ui/typography'
 
-import s from './check-email.module.scss'
+import s from './check-email-form.module.scss'
 
 export type Props = {
   email: string
 }
-export const CheckEmail = ({ email }: Props) => {
+export const CheckEmailForm = ({ email }: Props) => {
   return (
     <Card className={s.card}>
       <div className={s.container}>

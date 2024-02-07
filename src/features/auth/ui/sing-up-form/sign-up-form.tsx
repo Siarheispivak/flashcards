@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 
+import { signUpSchema } from '@/features/auth/lib/schemas/sing-up-schema/sign-up-schema'
 import { Button } from '@/shared/ui/button'
 import { Card } from '@/shared/ui/card'
 import { ControlledTextField } from '@/shared/ui/controlled/controlled-text-field/constrolled-text-field'
@@ -8,26 +9,24 @@ import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import s from './recovery-password.module.scss'
+import s from './sign-up-form.module.scss'
 
-const recoveryPasswordSchema = z.object({
-  email: z.string().email('Please enter a valid email'),
-})
-
-export type RecoveryPasswordFormValues = z.infer<typeof recoveryPasswordSchema>
+export type SignUpFormType = z.infer<typeof signUpSchema>
 type Props = {
-  onSubmit: (data: RecoveryPasswordFormValues) => void
+  onSubmit: (data: SignUpFormType) => void
 }
-export const RecoveryPassword = (props: Props) => {
+export const SignUpForm = (props: Props) => {
   const {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm<RecoveryPasswordFormValues>({
+  } = useForm<SignUpFormType>({
     defaultValues: {
       email: '',
+      password: '',
+      passwordConfirmation: '',
     },
-    resolver: zodResolver(recoveryPasswordSchema),
+    resolver: zodResolver(signUpSchema),
   })
 
   return (
@@ -35,7 +34,7 @@ export const RecoveryPassword = (props: Props) => {
       <DevTool control={control} />
       <Card className={s.card}>
         <Typography className={s.title} variant={'large'}>
-          Forgot your password?
+          Sign Up
         </Typography>
         <form onSubmit={handleSubmit(props.onSubmit)}>
           <div className={s.form}>
@@ -45,19 +44,30 @@ export const RecoveryPassword = (props: Props) => {
               label={'Email'}
               name={'email'}
             />
-            <Typography className={s.recoveryPassword} variant={'body2'}>
-              Enter your email address and we will send you further instructions
-            </Typography>
+            <ControlledTextField
+              control={control}
+              errorMessage={errors.password?.message}
+              label={'Password'}
+              name={'password'}
+              type={'password'}
+            />
+            <ControlledTextField
+              control={control}
+              errorMessage={errors.password?.message}
+              label={'Password'}
+              name={'passwordConfirmation'}
+              type={'password'}
+            />
             <Button className={s.button} fullWidth type={'submit'}>
-              Send instructions
+              Sign Up
             </Button>
           </div>
         </form>
-        <Typography as={'a'} className={s.rememberPassword} variant={'body2'}>
-          Did you remember your password?
+        <Typography as={'a'} className={s.alreadyHaveAnAccount} variant={'body2'}>
+          Already have an account?
         </Typography>
-        <Button as={'a'} className={s.tryLoggingIn} variant={'link'}>
-          Try logging in
+        <Button as={'a'} className={s.signUp} variant={'link'}>
+          Sign In
         </Button>
       </Card>
     </>

@@ -1,18 +1,28 @@
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { SignInForm } from '@/features/auth/ui/sing-in-form'
-import { useAuthMeQuery, useSignInMutation } from '@/shared/services/auth-api'
+import { LoginArgs, useSignInMutation } from '@/shared/services/auth-api'
 
 export const SignInPage = () => {
   const [signIn] = useSignInMutation()
-  const { isError, isLoading } = useAuthMeQuery()
+  const navigate = useNavigate()
 
-  if (isLoading) {
-    return <div>Loading...</div>
+  const handleSignIn = async (args: LoginArgs) => {
+    try {
+      await signIn(args)
+      navigate('/')
+    } catch (e) {
+      console.error(e)
+    }
   }
-  if (!isError) {
-    return <Navigate replace to={'/decks-pages'} />
-  }
+  // const { isError, isLoading } = useAuthMeQuery()
+  //
+  // if (isLoading) {
+  //   return <div>Loading...</div>
+  // }
+  // if (!isError) {
+  //   return <Navigate replace to={'/decks-pages'} />
+  // }
 
-  return <SignInForm onSubmit={signIn} />
+  return <SignInForm onSubmit={handleSignIn} />
 }
