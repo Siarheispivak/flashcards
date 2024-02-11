@@ -35,6 +35,9 @@ export const SignInForm = (props: Props) => {
   const handlerSignUp = () => {
     navigate('/sign-up')
   }
+  const handlerResetPassword = () => {
+    navigate('/recover-password')
+  }
 
   return (
     <>
@@ -59,7 +62,12 @@ export const SignInForm = (props: Props) => {
               type={'password'}
             />
             <ControlledCheckbox control={control} label={'Remember me'} name={'rememberMe'} />
-            <Typography as={'a'} className={s.recoveryPassword} variant={'body2'}>
+            <Typography
+              as={'a'}
+              className={s.recoveryPassword}
+              onClick={handlerResetPassword}
+              variant={'body2'}
+            >
               Forgot Password?
             </Typography>
             <Button className={s.button} fullWidth type={'submit'}>
