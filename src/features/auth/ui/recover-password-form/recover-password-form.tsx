@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 
+import { recoveryPasswordSchema } from '@/features/auth/lib/schemas/recovery-password-schema/recovery-password-schema'
 import { Button } from '@/shared/ui/button'
 import { Card } from '@/shared/ui/card'
 import { ControlledTextField } from '@/shared/ui/controlled/controlled-text-field/constrolled-text-field'
@@ -10,15 +11,11 @@ import { z } from 'zod'
 
 import s from './recovery-password-form.module.scss'
 
-const recoveryPasswordSchema = z.object({
-  email: z.string().email('Please enter a valid email'),
-})
-
 export type RecoveryPasswordFormValues = z.infer<typeof recoveryPasswordSchema>
 type Props = {
   onSubmit: (data: RecoveryPasswordFormValues) => void
 }
-export const RecoveryPassword = (props: Props) => {
+export const RecoveryPasswordForm = (props: Props) => {
   const {
     control,
     formState: { errors },

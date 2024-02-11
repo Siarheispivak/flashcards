@@ -1,8 +1,8 @@
 export const routes = {
   AUTH: {
     CHECK_EMAIL: '/check-email',
-    FORGOT_PASSWORD: '/forgot-password',
-    NEW_PASSWORD: '/new-password',
+    FORGOT_PASSWORD: '/recover-password',
+    NEW_PASSWORD: `/reset-password/:token`,
     SIGN_UP: '/sign-up',
     SING_IN: '/login',
   },

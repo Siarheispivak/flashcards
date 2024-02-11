@@ -1,4 +1,5 @@
 import { ProfileIcon, SignOutIcon } from '@/shared/assets'
+import { useLogOutMutation } from '@/shared/services/auth-api'
 import { Avatar } from '@/shared/ui/avatar'
 import { Dropdown, DropdownItem, DropdownItemWithIcon } from '@/shared/ui/drop-down'
 import { Typography } from '@/shared/ui/typography'
@@ -11,7 +12,7 @@ type Props = {
   src?: string
 }
 export const MenuHeader = ({ email, name, src }: Props) => {
-  //хук logout
+  const [logOut] = useLogOutMutation()
 
   const trigger = (
     <button className={s.trigger}>
@@ -29,7 +30,7 @@ export const MenuHeader = ({ email, name, src }: Props) => {
         </div>
       </DropdownItem>
       <DropdownItemWithIcon icon={<ProfileIcon />} text={'My profile'} />
-      <DropdownItemWithIcon icon={<SignOutIcon />} text={'Sign Out'} />
+      <DropdownItemWithIcon icon={<SignOutIcon />} onClick={() => logOut()} text={'Sign Out'} />
     </Dropdown>
   )
 }

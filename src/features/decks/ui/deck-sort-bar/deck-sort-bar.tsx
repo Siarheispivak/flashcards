@@ -20,7 +20,7 @@ export const DeckSortBar = () => {
   const debounced = useDebounce(name, 500)
 
   useEffect(() => {
-    setDeckParams({ DeckParamsType: { name } })
+    setDeckParams({ name })
   }, [debounced])
 
   const authorId = useAppSelector(state => state.decks.paramsDeck.authorId)
@@ -34,7 +34,7 @@ export const DeckSortBar = () => {
       <TextField className={s.searchField} onValueChange={setName} type={'search'} value={name} />
       <Tabs
         onValueChange={authorId => {
-          setDeckParams({ DeckParamsType: { authorId } })
+          setDeckParams({ authorId })
         }}
         tabs={[
           { title: 'My Cards', value: meData?.id! },
@@ -49,10 +49,8 @@ export const DeckSortBar = () => {
         onValueChange={setSliderValue}
         onValueCommit={values => {
           setDeckParams({
-            DeckParamsType: {
-              maxCardsCount: String(values[1]),
-              minCardsCount: String(values[0]),
-            },
+            maxCardsCount: String(values[1]),
+            minCardsCount: String(values[0]),
           })
         }}
         value={[sliderValue[0], sliderValue[1] ? sliderValue[1] : decksData?.maxCardsCount!]}

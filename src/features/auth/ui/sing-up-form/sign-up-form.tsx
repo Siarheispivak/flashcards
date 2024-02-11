@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 import { signUpSchema } from '@/features/auth/lib/schemas/sing-up-schema/sign-up-schema'
 import { Button } from '@/shared/ui/button'
@@ -28,6 +29,10 @@ export const SignUpForm = (props: Props) => {
     },
     resolver: zodResolver(signUpSchema),
   })
+  const navigate = useNavigate()
+  const handlerSignIn = () => {
+    navigate('/login')
+  }
 
   return (
     <>
@@ -66,7 +71,7 @@ export const SignUpForm = (props: Props) => {
         <Typography as={'a'} className={s.alreadyHaveAnAccount} variant={'body2'}>
           Already have an account?
         </Typography>
-        <Button as={'a'} className={s.signUp} variant={'link'}>
+        <Button as={'a'} className={s.signUp} onClick={handlerSignIn} variant={'link'}>
           Sign In
         </Button>
       </Card>

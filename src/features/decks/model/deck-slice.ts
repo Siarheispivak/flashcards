@@ -42,8 +42,8 @@ export const slice = createSlice({
       }
       state.sliderValue = [0, action.payload.maxCardsCount]
     },
-    setDeckParams: (state, action: PayloadAction<{ DeckParamsType: DeckParamsType }>) => {
-      state.paramsDeck = { ...state.paramsDeck, ...action.payload.DeckParamsType }
+    setDeckParams: (state, action: PayloadAction<Omit<DeckParamsType, 'orderBy'>>) => {
+      state.paramsDeck = { ...state.paramsDeck, ...action.payload }
     },
     setSliderValue: (state, action: PayloadAction<number[]>) => {
       state.sliderValue = action.payload

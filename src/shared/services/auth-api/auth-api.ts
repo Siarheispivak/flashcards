@@ -14,6 +14,19 @@ const authApi = baseApi.injectEndpoints({
       }),
       logOut: builder.mutation<void, void>({
         invalidatesTags: ['AuthMe'],
+        // async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        //   const patchResult = dispatch(
+        //     authApi.util.updateQueryData('authMe', undefined, () => {
+        //       return null
+        //     })
+        //   )
+        //
+        //   try {
+        //     await queryFulfilled
+        //   } catch {
+        //     patchResult.undo()
+        //   }
+        // },
         query: () => {
           return {
             method: 'POST',
@@ -21,7 +34,16 @@ const authApi = baseApi.injectEndpoints({
           }
         },
       }),
-      resetPassword: builder.mutation<unknown, { password: string; token: string }>({
+      recoveryPassword: builder.mutation<void, { email: string }>({
+        query: ({ email }) => {
+          return {
+            body: { email },
+            method: 'POST',
+            url: `v1/auth/recover-password`,
+          }
+        },
+      }),
+      resetPassword: builder.mutation<void, { password: string; token: string }>({
         query: ({ password, token }) => {
           return {
             body: { password },
@@ -46,7 +68,7 @@ const authApi = baseApi.injectEndpoints({
           return {
             body: args,
             method: 'POST',
-            url: 'v1/auth/me',
+            url: 'v1/auth/sign-up',
           }
         },
       }),
@@ -54,4 +76,11 @@ const authApi = baseApi.injectEndpoints({
   },
 })
 
-export const { useAuthMeQuery, useLogOutMutation, useSignInMutation, useSignUpMutation } = authApi
+export const {
+  useAuthMeQuery,
+  useLogOutMutation,
+  useRecoveryPasswordMutation,
+  useResetPasswordMutation,
+  useSignInMutation,
+  useSignUpMutation,
+} = authApi

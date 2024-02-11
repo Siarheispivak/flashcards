@@ -6,7 +6,7 @@ import { routes } from '@/shared/const'
 export const privateRoutes: RouteObject[] = [
   {
     element: <DecksPage />,
-    path: '/',
+    index: true,
   },
   {
     element: <h1>Cards Page</h1>,

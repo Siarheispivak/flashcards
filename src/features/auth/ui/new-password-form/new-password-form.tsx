@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 
+import { newPasswordSchema } from '@/features/auth/lib/schemas/new-password-schema/new-password-scheme'
 import { Button } from '@/shared/ui/button'
 import { Card } from '@/shared/ui/card'
 import { ControlledTextField } from '@/shared/ui/controlled/controlled-text-field/constrolled-text-field'
@@ -9,10 +10,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './new-password-form.module.scss'
-
-const newPasswordSchema = z.object({
-  newPassword: z.string().min(3).max(30),
-})
 
 export type newPasswordFormValues = z.infer<typeof newPasswordSchema>
 

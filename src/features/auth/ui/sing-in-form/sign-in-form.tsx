@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 import { signInSchema } from '@/features/auth/lib/schemas/sign-in-schema/sign-in-schema'
 import { Button } from '@/shared/ui/button'
@@ -30,6 +31,10 @@ export const SignInForm = (props: Props) => {
     mode: 'onSubmit',
     resolver: zodResolver(signInSchema),
   })
+  const navigate = useNavigate()
+  const handlerSignUp = () => {
+    navigate('/sign-up')
+  }
 
   return (
     <>
@@ -65,7 +70,7 @@ export const SignInForm = (props: Props) => {
         <Typography as={'a'} className={s.dontHaveAnAccount} variant={'body2'}>
           Dont have an account?
         </Typography>
-        <Button as={'a'} className={s.signUp} variant={'link'}>
+        <Button as={'a'} className={s.signUp} onClick={handlerSignUp} variant={'link'}>
           Sign Up
         </Button>
       </Card>
