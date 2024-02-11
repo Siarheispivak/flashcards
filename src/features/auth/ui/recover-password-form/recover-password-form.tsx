@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 import { recoveryPasswordSchema } from '@/features/auth/lib/schemas/recovery-password-schema/recovery-password-schema'
 import { Button } from '@/shared/ui/button'
@@ -26,6 +27,10 @@ export const RecoveryPasswordForm = (props: Props) => {
     },
     resolver: zodResolver(recoveryPasswordSchema),
   })
+  const navigate = useNavigate()
+  const handlerLogIn = () => {
+    navigate('/login')
+  }
 
   return (
     <>
@@ -53,7 +58,7 @@ export const RecoveryPasswordForm = (props: Props) => {
         <Typography as={'a'} className={s.rememberPassword} variant={'body2'}>
           Did you remember your password?
         </Typography>
-        <Button as={'a'} className={s.tryLoggingIn} variant={'link'}>
+        <Button as={'a'} className={s.tryLoggingIn} onClick={handlerLogIn} variant={'link'}>
           Try logging in
         </Button>
       </Card>
