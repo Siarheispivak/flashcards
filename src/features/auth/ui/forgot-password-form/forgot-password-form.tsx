@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import { recoveryPasswordSchema } from '@/features/auth/lib/schemas/recovery-password-schema/recovery-password-schema'
 import { Button } from '@/shared/ui/button'
@@ -10,13 +10,13 @@ import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import s from './recovery-password-form.module.scss'
+import s from './forgot-password-form.module.scss'
 
 export type RecoveryPasswordFormValues = z.infer<typeof recoveryPasswordSchema>
 type Props = {
   onSubmit: (data: RecoveryPasswordFormValues) => void
 }
-export const RecoveryPasswordForm = (props: Props) => {
+export const ForgotPasswordForm = (props: Props) => {
   const {
     control,
     formState: { errors },
@@ -27,10 +27,6 @@ export const RecoveryPasswordForm = (props: Props) => {
     },
     resolver: zodResolver(recoveryPasswordSchema),
   })
-  const navigate = useNavigate()
-  const handlerLogIn = () => {
-    navigate('/login')
-  }
 
   return (
     <>
@@ -58,8 +54,8 @@ export const RecoveryPasswordForm = (props: Props) => {
         <Typography as={'a'} className={s.rememberPassword} variant={'body2'}>
           Did you remember your password?
         </Typography>
-        <Button as={'a'} className={s.tryLoggingIn} onClick={handlerLogIn} variant={'link'}>
-          Try logging in
+        <Button as={'a'} className={s.tryLoggingIn} variant={'link'}>
+          <NavLink to={'/login'}>Try logging in</NavLink>
         </Button>
       </Card>
     </>

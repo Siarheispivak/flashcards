@@ -1,19 +1,19 @@
 import { useNavigate } from 'react-router-dom'
 
-import { RecoveryPasswordForm } from '@/features/auth/ui'
+import { ForgotPasswordForm } from '@/features/auth/ui'
 import { useRecoveryPasswordMutation } from '@/shared/services/auth-api'
 
-export const RecoveryPasswordPage = () => {
+export const ForgotPasswordPage = () => {
   const [recoveryPassword] = useRecoveryPasswordMutation()
   const navigate = useNavigate()
   const handleResetPassword = async (args: { email: string }) => {
     try {
       await recoveryPassword(args)
-      navigate('/auth/recovery-password')
+      navigate('/check-email')
     } catch (e) {
       console.error(e)
     }
   }
 
-  return <RecoveryPasswordForm onSubmit={handleResetPassword} />
+  return <ForgotPasswordForm onSubmit={handleResetPassword} />
 }
