@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { signInSchema } from '@/features/auth/lib/schemas/sign-in-schema/sign-in-schema'
 import { Button } from '@/shared/ui/button'
@@ -31,13 +31,6 @@ export const SignInForm = (props: Props) => {
     mode: 'onSubmit',
     resolver: zodResolver(signInSchema),
   })
-  const navigate = useNavigate()
-  const handlerSignUp = () => {
-    navigate('/sign-up')
-  }
-  const handlerResetPassword = () => {
-    navigate('/recover-password')
-  }
 
   return (
     <>
@@ -63,10 +56,10 @@ export const SignInForm = (props: Props) => {
             />
             <ControlledCheckbox control={control} label={'Remember me'} name={'rememberMe'} />
             <Typography
-              as={'a'}
+              as={Link}
               className={s.recoveryPassword}
-              onClick={handlerResetPassword}
-              variant={'body2'}
+              to={'/recover-password'}
+              variant={'link1'}
             >
               Forgot Password?
             </Typography>
@@ -78,9 +71,9 @@ export const SignInForm = (props: Props) => {
         <Typography as={'a'} className={s.dontHaveAnAccount} variant={'body2'}>
           Dont have an account?
         </Typography>
-        <Button as={'a'} className={s.signUp} onClick={handlerSignUp} variant={'link'}>
+        <Typography as={Link} className={s.signUp} to={'/sign-up'} variant={'link1'}>
           Sign Up
-        </Button>
+        </Typography>
       </Card>
     </>
   )

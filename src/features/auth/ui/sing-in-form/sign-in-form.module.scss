@@ -4,6 +4,7 @@
   @extend %card;
   display: flex;
   flex-direction: column;
+  text-align: center;
 
   .title {
     color: var(--color-light-100, #fff);
@@ -14,6 +15,7 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    text-align: left;
 
     width: 100%;
     margin-bottom: 12px;
@@ -24,6 +26,7 @@
 
     .recoveryPassword {
       text-align: end;
+      text-decoration: none;
     }
   }
 
@@ -36,5 +39,6 @@
     font-size: var(--font-size-m);
     font-weight: var(--font-weight-bold);
     text-decoration-line: underline;
+    color:var(--color-accent-500)
   }
 }

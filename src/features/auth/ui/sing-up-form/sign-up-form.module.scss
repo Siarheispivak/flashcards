@@ -1,8 +1,10 @@
 @import '@/app/styles/vars';
+
 .card {
-@extend %card;
+  @extend %card;
   display: flex;
   flex-direction: column;
+  text-align: center;
 
   .title {
     color: var(--color-light-100, #fff);
@@ -12,23 +14,29 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    text-align: left;
 
     width: 100%;
     margin-bottom: 12px;
-    .button{
+
+    .button {
       margin-top: 36px;
     }
-    .recoveryPassword{
+
+    .recoveryPassword {
       text-align: end;
     }
   }
-  .dontHaveAnAccount{
+
+  .dontHaveAnAccount {
     text-align: center;
-     color: var(--color-light-900, #C3C1C7);
+    color: var(--color-light-900, #C3C1C7);
   }
-  .signUp{
+
+  .signIn {
     font-size: var(--font-size-m);
     font-weight: var(--font-weight-bold);
     text-decoration-line: underline;
+    color: var(--color-accent-500);   // узнать почему стили из Typography перекрываются?
   }
 }
