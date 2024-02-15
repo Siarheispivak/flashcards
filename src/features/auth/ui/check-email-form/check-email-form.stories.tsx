@@ -1,5 +1,4 @@
 import { CheckEmailForm } from '@/features/auth/ui/check-email-form/check-email-form'
-import { Story } from '@storybook/blocks'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
