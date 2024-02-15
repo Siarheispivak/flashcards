@@ -10,7 +10,7 @@ export const NewPasswordPage = () => {
   const handleResetPassword = async (data: { newPassword: string }) => {
     try {
       await resetPassword({ password: data.newPassword, token: token! })
-      navigate(`/auth/reset-password`)
+      navigate(`/reset-password`)
     } catch (e) {
       console.error(e)
     }
