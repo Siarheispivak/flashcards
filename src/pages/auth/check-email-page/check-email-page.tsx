@@ -1,5 +1,5 @@
-import { CheckEmailForm } from '@/features/auth/ui'
+import { CheckEmailForm } from '@/features/auth/ui/check-email-form/check-email-form'
 
 export const CheckEmailPage = () => {
-  return <CheckEmailForm email={'need to show heere email'} />
+  return <CheckEmailForm email={'need to show here email'} />
 }
