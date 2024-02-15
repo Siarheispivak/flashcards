@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { recoveryPasswordSchema } from '@/features/auth/lib/schemas/recovery-password-schema/recovery-password-schema'
 import { Button } from '@/shared/ui/button'
@@ -51,12 +51,12 @@ export const ForgotPasswordForm = (props: Props) => {
             </Button>
           </div>
         </form>
-        <Typography as={'a'} className={s.rememberPassword} variant={'body2'}>
+        <Typography as={Link} className={s.rememberPassword} to={'/login'} variant={'body2'}>
           Did you remember your password?
         </Typography>
-        <Button as={'a'} className={s.tryLoggingIn} variant={'link'}>
-          <NavLink to={'/login'}>Try logging in</NavLink>
-        </Button>
+        <Typography as={Link} className={s.tryLoggingIn} to={'/login'} variant={'link1'}>
+          Try logging in
+        </Typography>
       </Card>
     </>
   )
