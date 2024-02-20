@@ -1,5 +1,8 @@
 import { CheckEmailForm } from '@/features/auth/ui/check-email-form/check-email-form'
+import { useAppSelector } from '@/shared/lib'
 
 export const CheckEmailPage = () => {
-  return <CheckEmailForm email={'need to show here email'} />
+  const email = useAppSelector(state => state.app.email)
+
+  return <CheckEmailForm email={email} />
 }
