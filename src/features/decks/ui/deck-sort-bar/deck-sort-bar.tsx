@@ -26,7 +26,7 @@ export const DeckSortBar = () => {
   const authorId = useAppSelector(state => state.decks.paramsDeck.authorId)
 
   const { clearDecksParams, setDeckParams, setSliderValue } = useActions(deckAction)
-  // Не понимаю что за useActions
+
   const sliderValue = useAppSelector(state => state.decks.sliderValue)
 
   return (
