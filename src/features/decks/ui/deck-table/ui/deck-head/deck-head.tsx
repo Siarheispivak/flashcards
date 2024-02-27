@@ -3,6 +3,8 @@ import { useAppSelector } from '@/shared/lib'
 import { useActions } from '@/shared/lib/hooks/use-action'
 import { Column, HeaderTable } from '@/shared/ui/table'
 
+import s from './deck-head.module.scss'
+
 export const DeckHead = () => {
   const columns: Column[] = [
     {
@@ -32,5 +34,5 @@ export const DeckHead = () => {
   const { setSortDeck } = useActions(deckAction)
   const sort = useAppSelector(state => state.decks.sortDeck)
 
-  return <HeaderTable columns={columns} onSort={setSortDeck} sort={sort} />
+  return <HeaderTable className={s.thead} columns={columns} onSort={setSortDeck} sort={sort} />
 }
