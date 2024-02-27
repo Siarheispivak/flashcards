@@ -29,10 +29,10 @@ const deckApi = baseApi.injectEndpoints({
       }),
       getDecks: builder.query<GetDecksResponse, GetDecksArgs>({
         providesTags: ['Decks'],
-        query: args => {
+        query: params => {
           return {
             method: 'GET',
-            params: args ?? {},
+            params: params ?? {},
             url: `v1/decks`,
           }
         },
