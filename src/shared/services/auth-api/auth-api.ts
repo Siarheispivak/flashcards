@@ -12,6 +12,24 @@ const authApi = baseApi.injectEndpoints({
           }
         },
       }),
+      changeAvatar: builder.mutation<User | null, { avatar?: string }>({
+        query: ({ avatar }) => {
+          return {
+            body: { avatar },
+            method: 'PATCH',
+            url: 'v1/auth/me',
+          }
+        },
+      }),
+      changeName: builder.mutation<User | null, { name?: string }>({
+        query: ({ name }) => {
+          return {
+            body: { name },
+            method: 'PATCH',
+            url: 'v1/auth/me',
+          }
+        },
+      }),
       logOut: builder.mutation<void, void>({
         invalidatesTags: ['AuthMe'],
         // async onQueryStarted(_, { dispatch, queryFulfilled }) {
@@ -78,6 +96,8 @@ const authApi = baseApi.injectEndpoints({
 
 export const {
   useAuthMeQuery,
+  useChangeAvatarMutation,
+  useChangeNameMutation,
   useLogOutMutation,
   useRecoveryPasswordMutation,
   useResetPasswordMutation,
