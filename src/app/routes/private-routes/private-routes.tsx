@@ -1,6 +1,7 @@
 import { RouteObject } from 'react-router-dom'
 
 import { DecksPage } from '@/pages/decks-pages/decks-page'
+import { ProfileInformationPage } from '@/pages/profile-information-page/profile-information-page'
 import { routes } from '@/shared/const'
 
 export const privateRoutes: RouteObject[] = [
@@ -16,8 +17,8 @@ export const privateRoutes: RouteObject[] = [
     element: <h1>Learn Page</h1>,
     path: routes.LEARN,
   },
-  // {
-  //   path: routes.PROFILE,
-  //   element: <PersonalInformation email={'Шкутник на приеме'} logOut={() => {}} />,
-  // },
+  {
+    element: <ProfileInformationPage />,
+    path: routes.PROFILE,
+  },
 ]
