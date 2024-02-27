@@ -2,8 +2,6 @@
 
 .card {
   @extend %card;
-  padding: 33px 92px 41px 80px;
-  gap: 6px;
   text-align: center;
 
   .title {
@@ -11,14 +9,9 @@
   }
 
   .photoContainer {
-    //.img {
-    //  width: 96px;
-    //  height: 96px;
-    //  object-fit: cover;
-    //  border-radius: 50%;
-    //}
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
 
     .containerInner {
       position: relative;
@@ -36,10 +29,19 @@
 
   .name {
     color: var(--Light-100, #FFF);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
+    width: 100%;
+
+    .profileName {
+      width: 100%;
+    }
+  }
+
+  .saveChanges {
+    margin-top: 20px;
+    max-width: inherit;
+    padding: 6px;
+    width: inherit;
+    box-sizing: border-box;
   }
 
   .email {

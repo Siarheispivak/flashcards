@@ -14,7 +14,7 @@ const classNames = {
   icon: s.icon,
   item: s.item,
   pageButton(selected?: boolean) {
-    return clsx(this.item, selected && s.selected) //????????
+    return clsx(this.item, selected && s.selected)
   },
   root: s.root,
   select: s.select,
