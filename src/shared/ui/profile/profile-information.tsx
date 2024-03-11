@@ -36,7 +36,6 @@ export const ProfileInformation = ({
   const activateViewMode = () => {
     setEditMode(false)
     onNameChange(name)
-    console.log('new name added')
   }
   const changeTitle = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.currentTarget.value)
@@ -45,7 +44,6 @@ export const ProfileInformation = ({
   const handlerAvatarChanged = () => {
     onAvatarChange('new avatar')
     setEditPhoto(true)
-    console.log('new avatar added')
   }
 
   const handleLogout = () => {
@@ -70,7 +68,11 @@ export const ProfileInformation = ({
       <Typography onDoubleClick={activateEditMode} variant={'h1'}>
         {value}
       </Typography>
-      <Edit />
+      <Edit
+        onClick={() => {
+          activateEditMode()
+        }}
+      />
     </div>
   )
   //вынести стили
@@ -94,7 +96,7 @@ export const ProfileInformation = ({
   const containerInner = editPhoto ? (
     <input className={''} title={''} type={'file'} />
   ) : (
-    <img alt={'avatar'} src={avatar} />
+    <img alt={'avatar'} className={s.image} src={avatar} />
   )
   const cameraButton = !editPhoto ? (
     <Button className={s.button} onClick={handlerAvatarChanged} variant={'secondary'}>
