@@ -1,7 +1,6 @@
 import { ComponentPropsWithoutRef, FC } from 'react'
 
 import { IconClose } from '@/shared/assets'
-import { Button } from '@/shared/ui/button'
 import { Typography } from '@/shared/ui/typography'
 import * as Dialog from '@radix-ui/react-dialog'
 import { DialogTitle } from '@radix-ui/react-dialog'
@@ -30,9 +29,9 @@ export const ModalTitle = (props: { title: string }) => {
         {props.title}
       </Typography>
       <Dialog.Close asChild>
-        <Button className={s.closeTitleButton}>
+        <button className={s.closeTitleButton}>
           <IconClose />
-        </Button>
+        </button>
       </Dialog.Close>
     </DialogTitle>
   )
@@ -43,5 +42,5 @@ export const ModalContent: FC<ModalContentTextProps> = ({ children, className })
 }
 type ModalFooterProps = ComponentPropsWithoutRef<'div'>
 export const ModalFooter: FC<ModalFooterProps> = ({ children }) => {
-  return <div className={s.modalContent}>{children}</div>
+  return <div className={s.modalFooter}>{children}</div>
 }
