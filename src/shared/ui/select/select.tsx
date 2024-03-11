@@ -6,7 +6,7 @@ import * as Label from '@radix-ui/react-label'
 import * as RadixSelect from '@radix-ui/react-select'
 import { clsx } from 'clsx'
 
-import s from './selct.module.scss'
+import s from './select.module.scss'
 
 export type Options = {
   disabled?: boolean
