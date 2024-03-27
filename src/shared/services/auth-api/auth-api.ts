@@ -12,15 +12,6 @@ const authApi = baseApi.injectEndpoints({
           }
         },
       }),
-      changeAvatar: builder.mutation<User | null, { avatar?: string }>({
-        query: ({ avatar }) => {
-          return {
-            body: { avatar },
-            method: 'PATCH',
-            url: 'v1/auth/me',
-          }
-        },
-      }),
       changeName: builder.mutation<User | null, { name?: string }>({
         query: ({ name }) => {
           return {
@@ -90,17 +81,44 @@ const authApi = baseApi.injectEndpoints({
           }
         },
       }),
+      updateUser: builder.mutation<User, FormData>({
+        invalidatesTags: ['AuthMe'],
+        async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+          const patchResult = dispatch(
+            authApi.util.updateQueryData('authMe', undefined, draft => {
+              const name = arg.get('name')
+
+              if (typeof name === 'string' && draft) {
+                draft.name = name
+              }
+            })
+          )
+
+          try {
+            await queryFulfilled
+          } catch {
+            patchResult.undo()
+          }
+        },
+        query: body => {
+          return {
+            body: body,
+            method: 'PATCH',
+            url: 'v1/auth/me',
+          }
+        },
+      }),
     }
   },
 })
 
 export const {
   useAuthMeQuery,
-  useChangeAvatarMutation,
   useChangeNameMutation,
   useLogOutMutation,
   useRecoveryPasswordMutation,
   useResetPasswordMutation,
   useSignInMutation,
   useSignUpMutation,
+  useUpdateUserMutation,
 } = authApi
