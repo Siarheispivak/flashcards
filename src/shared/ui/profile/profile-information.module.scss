@@ -1,58 +1,80 @@
 @import '@/app/styles/vars';
 
-.card {
-  @extend %card;
-  text-align: center;
+.cardContainer {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
 
-  .title {
-    margin-bottom: 21px;
-  }
+  .card {
+    @extend %card;
+    text-align: center;
 
-  .photoContainer {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    .title {
+      margin-bottom: 21px;
+    }
 
-    .containerInner {
-      position: relative;
+    .photoContainer {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
 
-      .image {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-      }
-
-      .button {
-        padding: 0;
+      .containerInner {
+        position: relative;
         margin: 0;
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        border-radius: 50%;
+        padding: 0;
+
+        .avatar {
+        }
+
+        .editAvatarButton {
+          all: unset;
+
+          cursor: pointer;
+
+          position: absolute;
+          right: 0;
+          bottom: 7%;
+
+          border-radius: 50%;
+          background-color: var(--color-dark-300);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
     }
-  }
 
-  .name {
-    color: var(--Light-100, #FFF);
-    width: 100%;
-
-    .profileName {
+    .nameContainer {
+      color: var(--Light-100, #FFF);
       width: 100%;
+      cursor: pointer;
+      .name {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        .editNickName{
+          cursor: pointer;
+        }
+      }
+
+      .profileName {
+        width: 100%;
+      }
     }
-  }
 
-  .saveChanges {
-    margin-top: 20px;
-    max-width: inherit;
-    padding: 6px;
-    width: inherit;
-    box-sizing: border-box;
-  }
+    .saveChanges {
+      margin-top: 20px;
+      max-width: inherit;
+      padding: 6px;
+      width: inherit;
+      box-sizing: border-box;
+    }
 
-  .email {
-    cursor: pointer;
-    color: var(--Dark-100, #808080);
-    margin-bottom: 13px;
+    .email {
+      //cursor: pointer;
+      color: var(--Dark-100, #808080);
+      margin-bottom: 13px;
+    }
   }
 }

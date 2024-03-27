@@ -1,41 +1,43 @@
+import { Navigate } from 'react-router-dom'
+
+import { routes } from '@/shared/const'
 import {
   useAuthMeQuery,
-  useChangeAvatarMutation,
-  useChangeNameMutation,
   useLogOutMutation,
+  useUpdateUserMutation,
 } from '@/shared/services/auth-api'
 import { ProfileInformation } from '@/shared/ui/profile'
 
 export const ProfileInformationPage = () => {
   const { data } = useAuthMeQuery()
   const [logOut] = useLogOutMutation()
-  const [changeAvatar] = useChangeAvatarMutation()
-  const [changeName] = useChangeNameMutation()
+  const [updateuserInfo] = useUpdateUserMutation()
 
-  const handleResetAvatar = async (avatar: string) => {
-    try {
-      await changeAvatar({ avatar: avatar })
-    } catch (e) {
-      console.error(e)
-    }
+  const onNameChange = (newName: string) => {
+    const formData = new FormData()
+
+    formData.append('name', newName)
+    updateuserInfo(formData)
+  }
+  const onAvatarChange = (fileImg: File) => {
+    const formData = new FormData()
+
+    formData.append('avatar', fileImg)
+    updateuserInfo(formData)
   }
 
-  const handleResetName = async (name: string) => {
-    try {
-      await changeName({ name: name })
-    } catch (e) {
-      console.error(e)
-    }
+  if (!data) {
+    return <Navigate to={routes.AUTH.SING_IN} />
+  } else {
+    return (
+      <ProfileInformation
+        avatar={data?.avatar!}
+        email={data?.email!}
+        name={data?.name!}
+        onAvatarChange={onAvatarChange}
+        onLogout={logOut}
+        onNameChange={onNameChange}
+      />
+    )
   }
-
-  return (
-    <ProfileInformation
-      avatar={data?.avatar!}
-      email={data?.email!}
-      onAvatarChange={handleResetAvatar}
-      onLogout={logOut}
-      onNameChange={handleResetName}
-      value={data?.name!}
-    />
-  )
 }
