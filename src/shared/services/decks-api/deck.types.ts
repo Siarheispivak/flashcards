@@ -1,7 +1,7 @@
-export type GetDecksResponse = {
-  items: GetDecksResponseItems[]
+export type Decks = {
+  items: Deck[]
   maxCardsCount: number
-  pagination: GetDecksResponsePagination
+  pagination: Pagination
 }
 export type GetDecksArgs = {
   authorId?: string
@@ -13,26 +13,23 @@ export type GetDecksArgs = {
   orderBy?: null | string
 } | void
 
-export type GetDecksByIdArgs = {
-  id: string
-}
 export type createDeckArgs = {
   cover?: string
   isPrivate?: boolean
   name: string
 }
-export type GetDecksResponsePagination = {
+export type Pagination = {
   currentPage: number
   itemsPerPage: number
   totalItems: number
   totalPages: number
 }
-export type GetDecksResponseItemsAuthor = {
+export type Author = {
   id: string
   name: string
 }
-export type GetDecksResponseItems = {
-  author: GetDecksResponseItemsAuthor
+export type Deck = {
+  author: Author
   cardsCount: number
   cover?: null | string
   created: string
@@ -46,3 +43,4 @@ export type GetDecksResponseItems = {
   updated: string
   userId: string
 }
+export type DeckId = { id: Deck['id'] }
