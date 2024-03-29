@@ -15,7 +15,7 @@ export const Header = () => {
   return (
     <header className={s.header}>
       <LogoIncubator />
-      {data && <MenuHeader email={data.email} name={data.name} />}
+      {data && <MenuHeader email={data.email} name={data.name} src={data.avatar} />}
       {!data && <Button variant={'primary'}>Sign In</Button>}
     </header>
   )
