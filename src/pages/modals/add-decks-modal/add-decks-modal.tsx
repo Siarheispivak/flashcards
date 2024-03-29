@@ -1,91 +1,84 @@
-import { useForm } from 'react-hook-form'
-
-import { addNewDeckSchema } from '@/features/decks/lib/schemas/add-decks-modal-schema/add-decks-modal-schema'
-import { useCreateDeckMutation } from '@/shared/services/decks-api'
+import {
+  useAddDeckForm,
+  useAddDeckFormType,
+} from '@/features/decks/lib/ui/create-deck-form/create-deck-form'
 import { Button } from '@/shared/ui/button'
 import { ControlledCheckbox } from '@/shared/ui/controlled/controlled-checkbox/controlled-checkbox'
 import { ControlledTextField } from '@/shared/ui/controlled/controlled-text-field/constrolled-text-field'
-import { Modal, ModalContent, ModalFooter, ModalTitle } from '@/shared/ui/modal/modal'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Separator } from '@radix-ui/react-select'
-import { z } from 'zod'
+import { ModalContent, ModalFooter, ModalTitle } from '@/shared/ui/modal/modal'
+import { Typography } from '@/shared/ui/typography'
 
 import s from './add-decks-modal.module.scss'
 
-export type AddNewDeckFormType = z.infer<typeof addNewDeckSchema>
-type Props = {
-  editPhoto: boolean
-  setEditPhoto: (editPhoto: boolean) => void
-  setVisitModal: (visitModal: boolean) => void
-  visitModal: boolean
-}
-export const AddDecksModal = (props: Props) => {
-  const { editPhoto, setEditPhoto, setVisitModal, visitModal } = props
-  const [createDeck, { isLoading }] = useCreateDeckMutation()
+import deckImg from '../../../shared/assets/images/reactJS.png'
 
-  const { control, handleSubmit } = useForm<AddNewDeckFormType>({
-    defaultValues: {
-      isPrivate: false,
-      name: '',
-    },
-    mode: 'onSubmit',
-    resolver: zodResolver(addNewDeckSchema),
+type CreateDeckFromProps = {
+  setIsOpenModal: (isOpen: boolean) => void
+  submitTextButton: string
+} & useAddDeckFormType
+export const AddDecksModal = ({
+  defaultData,
+  onSubmit,
+  setIsOpenModal,
+  submitTextButton,
+}: CreateDeckFromProps) => {
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+    register,
+    watch,
+  } = useAddDeckForm({
+    defaultData,
+    onSubmit: onSubmit,
   })
 
-  const handleFormSubmitter = handleSubmit(async data => {
-    await createDeck(data)
-    setVisitModal(false)
-    setEditPhoto(false)
-  })
-  const containerInner = editPhoto ? (
-    <input className={s.editPhoto} title={''} type={'file'} />
-  ) : (
-    <Button
-      className={s.uploadButton}
-      onClick={() => {
-        setEditPhoto(true)
-      }}
-      variant={'secondary'}
-    >
-      Upload Image
-    </Button>
-  )
+  // понять принцип работы
+  const checkCoverType = (cover: any): string | undefined => {
+    if (typeof cover === 'string') {
+      return cover
+    }
+    if (cover instanceof FileList) {
+      return watch('cover')[0] ? window.URL.createObjectURL(watch('cover')[0]) : undefined
+    }
+
+    return undefined
+  }
 
   return (
     <>
-      <Modal onOpenChange={setVisitModal} open={visitModal}>
-        <ModalTitle title={'Add New Pack'} />
-        <Separator asChild>
-          <span className={s.separator}></span>
-        </Separator>
-        <form onSubmit={handleFormSubmitter}>
-          <ModalContent className={s.modalContent}>
-            <ControlledTextField
-              control={control}
-              label={'Name Pack'}
-              name={'name'}
-              placeholder={'Name'}
-            />
-            {containerInner}
-            <ControlledCheckbox control={control} label={'Private Pack'} name={'isPrivate'} />
-          </ModalContent>
-          <ModalFooter className={s.modalFooter}>
-            <Button
-              disabled={isLoading}
-              onClick={() => {
-                setVisitModal(false)
-                setEditPhoto(false)
-              }}
-              variant={'secondary'}
-            >
-              Cancel
-            </Button>
-            <Button disabled={isLoading} type={'submit'}>
-              Add New Pack
-            </Button>
-          </ModalFooter>
-        </form>
-      </Modal>
+      <ModalTitle title={'Add New Pack'} />
+      <form onSubmit={handleSubmit}>
+        <img
+          alt={'Cards deck ava'}
+          className={s.deckImg}
+          src={checkCoverType(watch('cover')) ?? deckImg}
+        ></img>
+        <ModalContent className={s.modalContent}>
+          <ControlledTextField
+            control={control}
+            errorMessage={errors?.name?.message}
+            label={'Name Pack'}
+            name={'name'}
+            placeholder={'Name'}
+          />
+          <Button as={'label'} className={s.addCoverBtn} fullWidth variant={'secondary'}>
+            <Typography as={'span'} variant={'subtitle2'}>
+              Change Cover
+            </Typography>
+            <input {...register('cover')} style={{ display: 'none' }} type={'file'} />
+          </Button>
+          <ControlledCheckbox control={control} label={'Private Pack'} name={'isPrivate'} />
+        </ModalContent>
+        <ModalFooter className={s.modalFooter}>
+          <Button onClick={() => setIsOpenModal(false)} variant={'secondary'}>
+            Cancel
+          </Button>
+          <Button type={'submit'} variant={'primary'}>
+            {submitTextButton}
+          </Button>
+        </ModalFooter>
+      </form>
     </>
   )
 }
