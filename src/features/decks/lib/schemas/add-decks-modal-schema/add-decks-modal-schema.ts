@@ -1,11 +1,11 @@
 import { z } from 'zod'
-export const addNewDeckSchema = z.object({
+export const addCreateNewDeckSchema = z.object({
+  cover: z.any().optional(),
   isPrivate: z.boolean().optional(),
-  name: z.string().nonempty('Введите имя'),
+  name: z
+    .string()
+    .trim()
+    .min(3, { message: 'Must be 3 or more characters long' })
+    .max(30, { message: 'name must be shorter than or equal to 30 characters' })
+    .nonempty('Enter deck name'),
 })
-
-//спросить gpt chat  о  nonempty
-
-// Deprecated symbol used, consult docs for better alternative
-// TS6385: (message?: ErrMessage | undefined): ZodString is deprecated.
-//     types.d.ts(202, 8): The declaration was marked as deprecated here.
