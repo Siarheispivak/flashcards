@@ -1,10 +1,19 @@
-.trigger {
-  all: unset;
-  border-radius: 50%;
-  display: inline-flex;
-  height: 36px;
-  padding: 0;
-  cursor: pointer;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+.nickName{
+  text-decoration: none;
+}
+  .trigger {
+    all: unset;
+    border-radius: 50%;
+    display: inline-flex;
+    height: 36px;
+    padding: 0;
+    cursor: pointer;
+  }
 }
 
 .itemInformation {
