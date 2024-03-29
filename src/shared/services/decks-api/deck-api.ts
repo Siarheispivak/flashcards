@@ -1,33 +1,29 @@
 import { baseApi } from '@/shared/services/base-api/base-api'
-import {
-  GetDecksArgs,
-  GetDecksByIdArgs,
-  GetDecksResponse,
-  createDeckArgs,
-} from '@/shared/services/decks-api/deck.types'
+import { Deck, DeckId, Decks } from '@/shared/services/decks-api/deck.types'
 
 const deckApi = baseApi.injectEndpoints({
   endpoints: builder => {
     return {
-      createDeck: builder.mutation<void, createDeckArgs>({
+      createDeck: builder.mutation<Deck, FormData>({
+        //сделать через formData
         invalidatesTags: ['Decks'],
-        query: arg => {
+        query: data => {
           return {
-            body: arg,
+            body: data,
             method: 'POST',
             url: 'v1/decks',
           }
         },
       }),
-      getDeckById: builder.query<GetDecksResponse, GetDecksByIdArgs>({
-        // поменять типизацию респонса
+      getDeckById: builder.query<Deck, DeckId>({
+        providesTags: ['deckInfo'],
         query: ({ id }) => {
           return {
             url: `v1/decks/${id}`,
           }
         },
       }),
-      getDecks: builder.query<GetDecksResponse, GetDecksArgs>({
+      getDecks: builder.query<Decks, FormData>({
         providesTags: ['Decks'],
         query: params => {
           return {
