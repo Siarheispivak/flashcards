@@ -1,4 +1,4 @@
-import { ComponentProps, ComponentPropsWithoutRef, forwardRef, useState } from 'react'
+import React, { ComponentProps, ComponentPropsWithoutRef, forwardRef, useState } from 'react'
 
 import { CloseIcon, Eye, VisibilityOff } from '@/shared/assets/icons'
 import Search from '@/shared/assets/icons/search'
@@ -49,7 +49,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     const classNames = {
       error: clsx(s.error),
       field: clsx(s.field, !!errorMessage && s.error, className),
-      inputContainer: clsx(s.inputContainer, className),
+      inputContainer: clsx(s.inputContainer, !!errorMessage && s.error),
       label: clsx(s.label, labelProps?.className),
       root: clsx(s.root, containerProps?.className),
     }
@@ -94,7 +94,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           )}
         </div>
 
-        <Typography className={classNames.error} variant={'error'}>
+        <Typography className={s.errorLabel} variant={'error'}>
           {errorMessage}
         </Typography>
       </div>
