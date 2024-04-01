@@ -94,7 +94,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           )}
         </div>
 
-        <Typography className={classNames.error} variant={'error'}>
+        <Typography className={s.errorLabel} variant={'error'}>
           {errorMessage}
         </Typography>
       </div>

@@ -1,4 +1,5 @@
 import { z } from 'zod'
+
 export const addCreateNewDeckSchema = z.object({
   cover: z.any().optional(),
   isPrivate: z.boolean().optional(),
