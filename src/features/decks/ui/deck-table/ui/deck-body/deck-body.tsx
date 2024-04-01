@@ -1,13 +1,13 @@
 import { useDecks } from '@/features/decks/lib/use-decks'
-import { GetDecksResponseItems } from '@/shared/services/decks-api'
+import { Deck } from '@/shared/services/decks-api'
 import { TableBody, TableCell, TableRow } from '@/shared/ui/table'
 
 export const DeckBody = () => {
-  const { data } = useDecks() //почему не работало,точнее не правильно,влзможно из-за юз-эффекта
+  const { data } = useDecks()
 
   return (
     <TableBody>
-      {data?.items?.map((deck: GetDecksResponseItems) => {
+      {data?.items?.map((deck: Deck) => {
         return (
           <TableRow key={deck?.id}>
             <TableCell>{deck?.name}</TableCell>
