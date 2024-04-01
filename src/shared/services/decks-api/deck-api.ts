@@ -1,5 +1,5 @@
 import { baseApi } from '@/shared/services/base-api/base-api'
-import { Deck, DeckId, Decks } from '@/shared/services/decks-api/deck.types'
+import { Deck, DeckId, Decks, GetDecksArgs } from '@/shared/services/decks-api/deck.types'
 
 const deckApi = baseApi.injectEndpoints({
   endpoints: builder => {
@@ -23,7 +23,7 @@ const deckApi = baseApi.injectEndpoints({
           }
         },
       }),
-      getDecks: builder.query<Decks, FormData>({
+      getDecks: builder.query<Decks, GetDecksArgs>({
         providesTags: ['Decks'],
         query: params => {
           return {
