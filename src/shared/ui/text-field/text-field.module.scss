@@ -69,6 +69,7 @@
     }
 
   }
+
   .showPassword {
     cursor: pointer;
 
@@ -79,6 +80,7 @@
 
     background-color: transparent;
     border: none;
+
     &:focus-visible {
       outline: var(--outline-focus);
     }
@@ -87,8 +89,12 @@
 }
 
 .label {
-  margin-bottom: 1px;
-  color: var(--color-dark-100);
+  @include typograpthy(var(--font-size-s), var(--line-height-m));
 }
 
+.errorLabel {
+  @include typograpthy(var(--font-size-xs), var(--line-height-m));
+  color: var(--color-danger-300);
+  position: absolute;
+}
 
