@@ -11,19 +11,24 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
+export const EmptyAvatar: Story = {
   args: {
     avatar: 'url',
     email: 'your_email@domain.com',
-    onAvatarChange: (newAvatar: string) => {
-      console.info(newAvatar)
-    },
-    onLogout: () => {
-      console.info('logout')
-    },
-    onNameChange: (newValue: string) => {
-      console.info(newValue)
-    },
-    value: 'John Doe',
+    name: 'John Doe',
+  },
+}
+export const NormalAvatar: Story = {
+  args: {
+    avatar: 'https://avatars.githubusercontent.com/siarheispivak?v=4',
+    email: 'sspivka@gmail.com',
+    name: 'Peter Parker',
+  },
+}
+export const BrokenAvatar: Story = {
+  args: {
+    avatar: 'https://avatars.githubusercontent.com/siarheispivak?v=4',
+    email: 'sspivka@gmail.com',
+    name: 'Peter Parker',
   },
 }
